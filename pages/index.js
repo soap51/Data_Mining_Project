@@ -38,7 +38,7 @@ export default class extends React.Component {
                 </div>
                 <style jsx>{`
                     .containerStarbuckDetail{
-                       
+                        color : white;
                         display : flex;
                         z-index : 2;
                         max-height : 600px;
@@ -52,7 +52,8 @@ export default class extends React.Component {
                         max-height : 600px;
                         justify-content : space-around;
                         align-items :center;
-                        background-color : white;
+                        background-color : #2ecc71;
+                        color : white;
                     }
                     .containerLetStartQuiz{
                         display : flex;
