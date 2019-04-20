@@ -11,11 +11,12 @@ class MyDocument extends Document {
       <Html>
         <Head>
             <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet" />
+            <link rel="stylesheet" href="/static/RadioButton.css"/>
             <style>{`
                 body {
                     margin : 0;
                 }
-                h1,p {
+                h1,p , label {
                     margin : 0;
                     padding : 0;
                     font-family : Prompt ;
