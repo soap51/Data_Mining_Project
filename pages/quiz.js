@@ -13,7 +13,7 @@ export default class extends React.Component {
                 sex : "male",
                 salary : '5',
                 typeOfBuy : "eatAtShop",
-                numberOfCup : "5",
+                numberOfCup : "1",
                 recommendationPerson : "myself",
                 reasonToDrink : "bakery"
             },
