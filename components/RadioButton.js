@@ -4,6 +4,8 @@ export default ({name , text , onChange , value , checked}) => (
             <input onChange={onChange} value={value}  name={name} type="radio" checked={checked}/>
             <label  className="radio-label">{text}</label>
         </div>
+        <style jsx>{`
         
+        `}</style>
     </div>
 )
