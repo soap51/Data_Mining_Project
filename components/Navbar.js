@@ -9,7 +9,7 @@ class Navbar extends React.Component {
             <div>
                 <nav className="containerNavbar">
                     <div>
-                        <Link  href="/"><p className="link">Brand</p></Link>
+                        <Link  href="/"><p className="link">Amazon Vs Starbuck</p></Link>
                     </div>                    
                     <div className="containerRightNavbar">
                         <Link  href="/about"><p className="link">About</p></Link>
