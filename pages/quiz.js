@@ -10,8 +10,10 @@ export default class extends React.Component {
         this.state =  {
             question : [],
             answer : {
+                education : 'highschool',
                 sex : "male",
                 salary : '5',
+                age : 0,
                 typeOfBuy : "eatAtShop",
                 numberOfCup : "1",
                 recommendationPerson : "myself",
@@ -34,62 +36,33 @@ export default class extends React.Component {
     onSubmit = (e) => {
         e.preventDefault()
         const {answer} = this.state
-        if(answer.sex == "female"){
-            if(answer.typeOfBuy == "eatAtHome"){
-                if(answer.reasonToDrink == "bakery")    this.setState({ predict : "Amazon" })
-                else if(answer.reasonToDrink == "easyToBuy")    this.setState({ predict : "Amazon" })
-                else if(answer.reasonToDrink == "enviroment")    this.setState({ predict : "Amazon" })
-                else if(answer.reasonToDrink == "meeting")    this.setState({ predict : "Amazon" })
-                else if(answer.reasonToDrink == "price")    this.setState({ predict : "Amazon" })
-                else if(answer.reasonToDrink == "promotion") {
-                    if(answer.recommendationPerson == "family") this.setState({predict : "Amazon"})
-                    else if(answer.recommendationPerson == "friend") this.setState({predict : "Starbuck"})
-                    else if(answer.recommendationPerson == "myself") this.setState({predict : "Amazon"})
-                    else if(answer.recommendationPerson == "staff") this.setState({predict : "Starbuck"})
+        if(answer.reasonToDrink == "environment") this.setState({predict : "Amazon"})
+        else if(answer.reasonToDrink == "taste"){ 
+            if(answer.education == "bachelor"){
+                if(answer.age > 45) this.setState({predict : "Amazon"})
+                else if(answer.age >= 23 && answer.age <= 45) this.setState({predict : "Starbuck"})
+                else{
+                    if(answer.typeOfBuy == "eatAtHome") this.setState({predict : "Amazon"})
+                    else this.setState({predict : "Starbuck"})
                 }
-                else if(answer.reasonToDrink == "taste") this.setState({predict : "Amazon"})
-                else if(answer.reasonToDrink == "wifi/internet") this.setState({predict : "Amazon"})
-            }else {
-                if(answer.salary == "15"){
-                    if(answer.numberOfCup == "1"){
-                        if(answer.recommendationPerson == "family") this.setState({predict : "Amazon"})
-                        else if(answer.recommendationPerson == "myself") this.setState({predict : "Starbuck"})
-                    }
-                    else if(answer.numberOfCup == "2") this.setState({predict : "Amazon"})
-                }
-                else if(answer.salary =="20") {
-                    if(answer.numberOfCup == "1")  this.setState({predict : "Starbuck"})
-                    else if(answer.numberOfCup =="2") this.setState({predict : "Amazon"})
-                }
-                else if(answer.salary =="25") this.setState({predict : "Amazon"})
-                else if(answer.salary =="30"){
-                    if(answer.reasonToDrink == "environment") this.setState({predict : "Amazon"})
-                    else if(answer.reasonToDrink == "meeting") this.setState({predict : "Amazon"})
-                    else if(answer.reasonToDrink == "taste") this.setState({predict : "Starbuck"})
-                }
-                else if(answer.salary =="35") this.setState({predict : "Starbuck"})
-                else if(answer.salary =="40") this.setState({predict : "Starbuck"})
-                else if(answer.salary =="45") this.setState({predict : "Starbuck"})
-                else if(answer.salary =="50") this.setState({predict : "Amazon"})
-                else if(answer.salary =="10") this.setState({predict : "Amazon"})
-                else if(answer.salary =="5") this.setState({predict : "Amazon"})
-                else if(answer.salary =="55") this.setState({predict : "Amazon"})
             }
-        }else{
-            if(answer.reasonToDrink =="bakery") this.setState({predict : "Starbuck"})
-            else if(answer.reasonToDrink =="easyToBuy") this.setState({predict : "Amazon"})
-            else if(answer.reasonToDrink == "environment"){
-                if(answer.numberOfCup == "1") this.setState({predict : "Amazon"})
-                else if(answer.numberOfCup == "2") this.setState({predict : "Amazon"})
-                else if(answer.numberOfCup == "3") this.setState({predict : "Starbuck"})
-            }
-            else if(answer.reasonToDrink == "meeting") this.setState({predict : "Starbuck"})
-            else if(answer.reasonToDrink == "price") this.setState({predict : "Amazon"})
-            else if(answer.reasonToDrink == "promotion") this.setState({predict : "Starbuck"})
-            else if(answer.reasonToDrink == "taste") this.setState({predict : "Starbuck"})
-            else if(answer.reasonToDrink == "wifi/internet") this.setState({predict : "Starbuck"})
+            else if(answer.education == "highschool") this.setState({predict : "Amazon"})
+            else if(answer.education == "master") this.setState({predict : "Starbuck"})
+            else if(answer.education == "doctoral") this.setState({predict : "Amazon"})
         }
-        
+        else if(answer.reasonToDrink == "easyToBuy") this.setState({predict : "Amazon"})
+        else if(answer.reasonToDrink == "promotion"){
+            if(answer.recommendationPerson == "myself") this.setState({predict : "Amazon"})
+            else if(answer.recommendationPerson == "family") this.setState({predict : "Amazon"})
+            else if(answer.recommendationPerson == "friend") this.setState({predict : "Starbuck "})
+            else if(answer.recommendationPerson == "staff") this.setState({predict : "Starbuck "})
+            else if(answer.recommendationPerson == "location") this.setState({predict : "Amazon"})
+            else if(answer.recommendationPerson == "celebrity") this.setState({predict : "Starbuck "})
+        }
+        else if(answer.reasonToDrink == "meeting") this.setState({predict : "Starbuck"})
+        else if(answer.reasonToDrink == "wifi/internet") this.setState({predict : "Starbuck"})
+        else if(answer.reasonToDrink == "price") this.setState({predict : "Amazon"})
+        else if(answer.reasonToDrink == "bakery") this.setState({predict : "Starbuck"})
     }
     render(){
         const {answer , predict} = this.state
@@ -107,6 +80,16 @@ export default class extends React.Component {
                             <div>
                                 <div className="containerQuestionText">
                                     <h1>
+                                        อายุ 
+                                    </h1>                          
+                                </div>
+                                <div className="containerChoice">
+                                    <input name="age" value={answer.age} onChange={(e) => this.setState({answer : {...this.state.answer , age : e.target.value}})} />
+                                </div>
+                            </div>    
+                            {/* <div>
+                                <div className="containerQuestionText">
+                                    <h1>
                                         เพศ 
                                     </h1>                          
                                 </div>
@@ -114,8 +97,8 @@ export default class extends React.Component {
                                     <RadioButton text="ชาย" type="radio" name="sex" value="male" checked={answer.sex=='male'} onChange={this.changeRadio.bind(this, 'male' , "sex")} />
                                     <RadioButton text="หญิง" type="radio" name="sex" value="female" checked={answer.sex=='female'} onChange={this.changeRadio.bind(this, 'female' , "sex")} />                            
                                 </div>
-                            </div>       
-                            {/* <div>
+                            </div>        */}
+                             <div>
                                 <div className="containerQuestionText">
                                     <h1>
                                         การศึกษา 
@@ -125,9 +108,9 @@ export default class extends React.Component {
                                     <RadioButton text="ต่ำกว่าปริญญาตรี" type="radio" name="education" value="highschool" checked={answer.education=='highschool'} onChange={this.changeRadio.bind(this, 'highschool' , "education")} />
                                     <RadioButton text="ปริญญาตรี" type="radio" name="education" value="bachelor" checked={answer.education=='bachelor'} onChange={this.changeRadio.bind(this, 'bachelor' , "education")} />                            
                                     <RadioButton text="ปริญญาโท" type="radio" name="education" value="master" checked={answer.education=='master'} onChange={this.changeRadio.bind(this, 'master' , "education")} />                            
-                                    
+                                    <RadioButton text="ปริญญาเอก" type="radio" name="education" value="doctoral" checked={answer.education=='doctoral'} onChange={this.changeRadio.bind(this, 'doctoral' , "education")} />                            
                                 </div>
-                            </div>                                */}
+                            </div>                                
                             {/* <div>
                                 <div className="containerQuestionText">
                                     <h1>
@@ -155,7 +138,7 @@ export default class extends React.Component {
                                     <RadioButton text="18.01 - 21.00 น" type="radio" name="time" value="18" checked={answer.time=='18'} onChange={this.changeRadio.bind(this, '18' , "time")} />                                                               
                                 </div>
                             </div> */}
-                            <div>
+                            {/* <div>
                                 <div className="containerQuestionText">
                                     <h1>
                                         เงินเดือน 
@@ -174,8 +157,8 @@ export default class extends React.Component {
                                     <RadioButton text="45,001 - 50,000 บาท" type="radio" name="salary" value="50" checked={answer.salary=='50'} onChange={this.changeRadio.bind(this, '50' , "salary")} />                                                               
                                     <RadioButton text="มากกว่า 50,000 บาท" type="radio" name="salary" value="55" checked={answer.salary=='55'} onChange={this.changeRadio.bind(this, '55' , "salary")} />                                                               
                                 </div>
-                            </div>
-                            <div>
+                            </div> */}
+                            {/* <div>
                                 <div className="containerQuestionText">
                                     <h1>
                                         จำนวนแก้ว 
@@ -185,10 +168,10 @@ export default class extends React.Component {
                                     <RadioButton text="1 แก้ว" type="radio" name="numberOfCup" value="1" checked={answer.numberOfCup=='1'} onChange={this.changeRadio.bind(this, '1' , "numberOfCup")} />
                                     <RadioButton text="2 แก้ว" type="radio" name="numberOfCup" value="2" checked={answer.numberOfCup=='2'} onChange={this.changeRadio.bind(this, '2' , "numberOfCup")} />
                                     <RadioButton text="3 แก้ว" type="radio" name="numberOfCup" value="3" checked={answer.numberOfCup=='3'} onChange={this.changeRadio.bind(this, '3' , "numberOfCup")} />                            
-                                    {/* <RadioButton text="4 แก้ว" type="radio" name="numberOfCup" value="4" checked={answer.numberOfCup=='4'} onChange={this.changeRadio.bind(this, '4' , "numberOfCup")} />                            
-                                    <RadioButton text="มากกว่า 4 แก้ว" type="radio" name="numberOfCup" value="5" checked={answer.numberOfCup=='5'} onChange={this.changeRadio.bind(this, '5' , "numberOfCup")} />                                                                */}
+                                    <RadioButton text="4 แก้ว" type="radio" name="numberOfCup" value="4" checked={answer.numberOfCup=='4'} onChange={this.changeRadio.bind(this, '4' , "numberOfCup")} />                            
+                                    <RadioButton text="มากกว่า 4 แก้ว" type="radio" name="numberOfCup" value="5" checked={answer.numberOfCup=='5'} onChange={this.changeRadio.bind(this, '5' , "numberOfCup")} />                                                                
                                 </div>
-                            </div>      
+                            </div>       */}
                             <div>
                                 <div className="containerQuestionText">
                                     <h1>
