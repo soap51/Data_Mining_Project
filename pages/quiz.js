@@ -11,6 +11,7 @@ export default class extends React.Component {
             question : [],
             answer : {
                 education : 'highschool',
+                typeOfDrinks : "Green Tea",
                 sex : "male",
                 salary : '5',
                 age : 0,
@@ -176,6 +177,23 @@ export default class extends React.Component {
                                 <div className="containerChoice">
                                     <RadioButton text="ชาย" type="radio" name="sex" value="male" checked={answer.sex=='male'} onChange={this.changeRadio.bind(this, 'male' , "sex")} />
                                     <RadioButton text="หญิง" type="radio" name="sex" value="female" checked={answer.sex=='female'} onChange={this.changeRadio.bind(this, 'female' , "sex")} />                            
+                                </div>
+                            </div>    
+                          
+                            <div>
+                                <div className="containerQuestionText">
+                                    <h1>
+                                        เมนู 
+                                    </h1>                          
+                                </div>
+                                <div className="containerChoice">
+                                    <RadioButton text="อเมริกาโน่" type="radio" name="typeOfDrinks" value="Americano" checked={answer.typeOfDrinks=='Americano'} onChange={this.changeRadio.bind(this, 'Americano' , "typeOfDrinks")} />
+                                    <RadioButton text="ลาเต้" type="radio" name="typeOfDrinks" value="Caffe Latte" checked={answer.typeOfDrinks=='Caffe Latte'} onChange={this.changeRadio.bind(this, 'Caffe Latte' , "typeOfDrinks")} />                            
+                                    <RadioButton text="ช็อคโกแลต" type="radio" name="typeOfDrinks" value="Chocolate" checked={answer.typeOfDrinks=='Chocolate'} onChange={this.changeRadio.bind(this, 'Chocolate' , "typeOfDrinks")} />                            
+                                    <RadioButton text="คาปูชิโน่" type="radio" name="typeOfDrinks" value="Cuppuccino" checked={answer.typeOfDrinks=='Cuppuccino'} onChange={this.changeRadio.bind(this, 'Cuppuccino' , "typeOfDrinks")} />                            
+                                    <RadioButton text="เอสเพรสโซ่" type="radio" name="typeOfDrinks" value="Espresso" checked={answer.typeOfDrinks=='Espresso'} onChange={this.changeRadio.bind(this, 'Espresso' , "typeOfDrinks")} />                            
+                                    <RadioButton text="ชาเขียว" type="radio" name="typeOfDrinks" value="Green tea" checked={answer.typeOfDrinks=='Green tea'} onChange={this.changeRadio.bind(this, 'Green tea' , "typeOfDrinks")} />                            
+                                    
                                 </div>
                             </div>       
                              {/* <div>
